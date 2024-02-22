@@ -66,11 +66,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *termcmd[]  = { "st", NULL };
+static const char *cmdprintscreen[]  = { "scrot", "-d3", "/home/username/Pictures/screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL };
 
 // zoom = switch between master and slave
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = cmdprintscreen} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
